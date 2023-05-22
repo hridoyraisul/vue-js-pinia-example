@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import axios from "axios";
 
 export const useCounterStore = defineStore({
     id: 'counter',
@@ -10,19 +11,22 @@ export const useCounterStore = defineStore({
     actions: {
         increment() {
             this.count++;
-            this.fetchPost(this.count);
+            this.callPostAPI();
         },
         decrement() {
             this.count--;
+            this.callPostAPI();
         },
         reset() {
             this.count = 0;
         },
-        async fetchPost(index) {
+        callPostAPI() {
             if(this.count > 0) {
-                await fetch('https://jsonplaceholder.typicode.com/posts/' + index).then(response => {
-                    this.post = response.json();
-                });
+                axios.get(`https://jsonplaceholder.typicode.com/posts/${this.count}`).then(response => {
+                    this.post = response.data;
+                })
+            } else {
+                this.post = {};
             }
         }
     },
@@ -34,7 +38,6 @@ export const useCounterStore = defineStore({
             return this.count
         },
         postValue() {
-            console.log(this.post)
             return this.post;
         }
     }
