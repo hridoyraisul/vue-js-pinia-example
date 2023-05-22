@@ -1,7 +1,15 @@
-<script setup>
+<script>
 import {useCounterStore} from "@/stores/Counter";
 
-const counterStore = useCounterStore()
+export default {
+    name: "CounterView",
+    data() {
+        const counterStore = useCounterStore();
+        return {
+            counterStore
+        }
+    },
+}
 </script>
 
 <template>

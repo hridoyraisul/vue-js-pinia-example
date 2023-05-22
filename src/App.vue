@@ -3,6 +3,8 @@
         <CountView/>
         <CounterPage/>
         <EvenOddCalculator/>
+       <hr>
+       <PostView/>
     </div>
 </template>
 
@@ -10,10 +12,12 @@
 import CounterPage from './components/Counter.vue'
 import EvenOddCalculator from './components/EvenOddCalculator.vue'
 import CountView from "@/components/CountView.vue";
+import PostView from "@/components/PostView.vue";
 
 export default {
   name: 'App',
   components: {
+      PostView,
       CountView,
       CounterPage,
       EvenOddCalculator

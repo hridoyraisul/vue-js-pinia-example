@@ -10,12 +10,20 @@ export const useCounterStore = defineStore({
     actions: {
         increment() {
             this.count++;
+            this.fetchPost(this.count);
         },
         decrement() {
             this.count--;
         },
         reset() {
             this.count = 0;
+        },
+        async fetchPost(index) {
+            if(this.count > 0) {
+                await fetch('https://jsonplaceholder.typicode.com/posts/' + index).then(response => {
+                    this.post = response.json();
+                });
+            }
         }
     },
     getters: {
@@ -26,7 +34,8 @@ export const useCounterStore = defineStore({
             return this.count
         },
         postValue() {
-            return this.post
+            console.log(this.post)
+            return this.post;
         }
     }
 })

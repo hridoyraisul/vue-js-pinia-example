@@ -1,8 +1,7 @@
 <script>
 import {useCounterStore} from "@/stores/Counter";
-
 export default {
-    name: "EvenOddCalculator",
+    name: "PostView",
     data() {
         const counterStore = useCounterStore();
         return {
@@ -13,9 +12,10 @@ export default {
 </script>
 
 <template>
-  <div class="app">
-        <h2>{{counterStore.evenOrOddValue.toUpperCase()}}</h2>
-    </div>
+  <div>
+      <h1>{{counterStore.post?.title}}</h1>
+      <p>{{counterStore.post?.body}}</p>
+  </div>
 </template>
 
 <style scoped>
