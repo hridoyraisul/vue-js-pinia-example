@@ -1,15 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <div id="app">
+        <CountView/>
+        <CounterPage/>
+        <EvenOddCalculator/>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CounterPage from './components/Counter.vue'
+import EvenOddCalculator from './components/EvenOddCalculator.vue'
+import CountView from "@/components/CountView.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+      CountView,
+      CounterPage,
+      EvenOddCalculator
   }
 }
 </script>
